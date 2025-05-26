@@ -11,7 +11,7 @@ import java.util.Date;
 @Component
 public class JwtUtils {
 
-    private final String SECRET = "OCIOJAEN_SUPER_SECRETO_OCIOJAEN_SUPER_SECRETO";
+    private final String SECRET = "OCIOJAEN_SUPER_SECRETO";
     private final long EXPIRATION_MS = 86400000; // 1 día
 
     private Key getSigningKey() {
