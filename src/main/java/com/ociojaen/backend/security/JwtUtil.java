@@ -9,7 +9,7 @@ import java.security.Key;
 import java.util.Date;
 
 @Component
-public class JwtUtils {
+public class JwtUtil {
 
     private final String SECRET = "OCIOJAEN_SUPER_SECRETO";
     private final long EXPIRATION_MS = 86400000; // 1 día
