@@ -20,6 +20,7 @@ public class AuthService {
         Usuario user = new Usuario();
         user.setUsername(username);
         user.setEmail(email);
+        user.setEnabled(true);
         user.setPassword(passwordEncoder.encode(password));
         user.setTipo(tipo);
         usuarioRepo.save(user);
