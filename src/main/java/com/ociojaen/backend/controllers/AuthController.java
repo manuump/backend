@@ -1,6 +1,5 @@
 package com.ociojaen.backend.controllers;
 
-import com.ociojaen.backend.models.Rol;
 import com.ociojaen.backend.services.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +13,10 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegistroRequest req) {
-        return ResponseEntity.ok(authService.registrar(req.username(), req.email(), req.password(), req.tipo()));
+        return ResponseEntity.ok(authService.registrar(req.username(), req.email(), req.password()));
+    }
+
+    public record RegistroRequest(String username, String email, String password) {
     }
 
     @PostMapping("/login")
@@ -22,6 +24,6 @@ public class AuthController {
         return ResponseEntity.ok(authService.login(req.username(), req.password()));
     }
 
-    public record RegistroRequest(String username, String email, String password, Rol tipo) {}
-    public record LoginRequest(String username, String password) {}
+    public record LoginRequest(String username, String password) {
+    }
 }

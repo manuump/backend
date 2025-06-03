@@ -1,7 +1,9 @@
 package com.ociojaen.backend.services;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
+import com.ociojaen.backend.models.Rol;
 import com.ociojaen.backend.models.Usuario;
 import com.ociojaen.backend.repos.UsuarioRepository;
 
@@ -19,7 +21,7 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-     public boolean eliminarUsuario(Long id) {
+    public boolean eliminarUsuario(Long id) {
         if (usuarioRepository.existsById(id)) {
             usuarioRepository.deleteById(id);
             return true;
@@ -27,5 +29,12 @@ public class UsuarioService {
             return false;
         }
     }
-}
 
+    @PreAuthorize("hasRole('ADMIN')")
+    public void cambiarRol(Long idUsuario, Rol nuevoRol) {
+        Usuario user = usuarioRepository.findById(idUsuario).orElseThrow();
+        user.setTipo(nuevoRol);
+        usuarioRepository.save(user);
+    }
+
+}

@@ -28,4 +28,7 @@ public class Evento {
     @ManyToOne
     @JoinColumn(name = "organizador_id")
     private Usuario organizador; // El usuario con rol EMPRESA que lo organiza
+
+    @Column(length = 500)
+    private String imagenUrl;
 }

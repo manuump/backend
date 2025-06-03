@@ -16,16 +16,17 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
 
-    public String registrar(String username, String email, String password, Rol tipo) {
-        Usuario user = new Usuario();
-        user.setUsername(username);
-        user.setEmail(email);
-        user.setEnabled(true);
-        user.setPassword(passwordEncoder.encode(password));
-        user.setTipo(tipo);
-        usuarioRepo.save(user);
-        return jwtService.generateToken(new UserDetailsImpl(user));
-    }
+    public String registrar(String username, String email, String password) {
+    Usuario user = new Usuario();
+    user.setUsername(username);
+    user.setEmail(email);
+    user.setEnabled(true);
+    user.setPassword(passwordEncoder.encode(password));
+    user.setTipo(Rol.USUARIO); // Siempre USUARIO al registrarse
+    usuarioRepo.save(user);
+    return jwtService.generateToken(new UserDetailsImpl(user));
+}
+
 
     public String login(String username, String password) {
         Usuario user = usuarioRepo.findByUsername(username).orElseThrow();

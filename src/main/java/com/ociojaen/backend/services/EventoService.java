@@ -41,6 +41,7 @@ public class EventoService {
         existente.setDescripcion(nuevoEvento.getDescripcion());
         existente.setFecha(nuevoEvento.getFecha());
         existente.setUbicacion(nuevoEvento.getUbicacion());
+        existente.setImagenUrl(nuevoEvento.getImagenUrl());
         return eventoRepo.save(existente);
     }
 
