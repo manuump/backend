@@ -21,15 +21,32 @@ public class UserDetailsImpl implements UserDetails {
     }
 
     @Override
-    public String getPassword() { return usuario.getPassword(); }
+    public String getPassword() {
+        return usuario.getPassword();
+    }
+
     @Override
-    public String getUsername() { return usuario.getUsername(); }
+    public String getUsername() {
+        return usuario.getUsername();
+    }
+
     @Override
-    public boolean isAccountNonExpired() { return true; }
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
     @Override
-    public boolean isAccountNonLocked() { return true; }
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
     @Override
-    public boolean isCredentialsNonExpired() { return true; }
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
     @Override
-    public boolean isEnabled() { return usuario.isEnabled(); }
+    public boolean isEnabled() {
+        return usuario.isEnabled();
+    }
 }

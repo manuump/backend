@@ -18,7 +18,7 @@ public class JwtService {
         // Añadimos el rol como claim
         claims.put("role", userDetails.getAuthorities().stream()
                 .findFirst().get().getAuthority().replace("ROLE_", ""));
-
+        claims.put("username", userDetails.getUsername());        
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(userDetails.getUsername())
