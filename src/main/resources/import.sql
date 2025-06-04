@@ -1,8 +1,8 @@
 INSERT INTO usuario (username, password, email, enabled, tipo) VALUES
 ('admin',  '$2a$12$QUTZthUgVf3GaXkO62PfXONas.hmWNNnk1dqIrIUlZUILDRaP/i1u', 'admin@ociojaen.com', true, 'ADMIN'),
-('empresa1', '$2a$10$DowJmL5ujX2Q/E1H7YZEXefgWlFSz17y6xzzD2NvJH72zQg7bZc8.', 'empresa1@ociojaen.com', true, 'EMPRESA'),
+('kharma', '$2a$12$oWJDVzdo2kcujJSzd9uXlOemUQOjxP/zKh3AXIekHbei0nJl556kG', 'kharma@ociojaen.com', true, 'EMPRESA'),
 ('empresa2', '$2a$10$DowJmL5ujX2Q/E1H7YZEXefgWlFSz17y6xzzD2NvJH72zQg7bZc8.', 'empresa2@ociojaen.com', true, 'EMPRESA'),
-('usuario1', '$2a$10$DowJmL5ujX2Q/E1H7YZEXefgWlFSz17y6xzzD2NvJH72zQg7bZc8.', 'usuario1@ociojaen.com', true, 'USUARIO'),
+('manu', '$2a$12$g1byzY8LeZlRoZsVjb8V8OCMzYJNHAli.sa5M4NRJwqjskniJSv1K', 'manu@ociojaen.com', true, 'USUARIO'),
 ('usuario2', '$2a$10$DowJmL5ujX2Q/E1H7YZEXefgWlFSz17y6xzzD2NvJH72zQg7bZc8.', 'usuario2@ociojaen.com', true, 'USUARIO'); 
 
 

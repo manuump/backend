@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/admin/usuarios")
@@ -25,8 +26,9 @@ public class UsuarioController {
 
     @PutMapping("/{id}/rol")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Void> cambiarRol(@PathVariable Long id, @RequestBody Rol nuevoRol) {
-        usuarioService.cambiarRol(id, nuevoRol);
+    public ResponseEntity<Void> cambiarRol(@PathVariable Long id, @RequestBody Map<String, String> body) {
+        String nuevoRol = body.get("rol");
+        usuarioService.cambiarRol(id, Rol.valueOf(nuevoRol));
         return ResponseEntity.noContent().build();
     }
 }
