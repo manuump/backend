@@ -37,4 +37,23 @@ public class ParticipacionService {
         Usuario usuario = usuarioRepo.findByUsername(username).orElseThrow();
         return participacionRepo.findByUsuarioId(usuario.getId());
     }
+
+    public void cancelarParticipacion(Long participacionId, String username) {
+        Participacion p = participacionRepo.findById(participacionId).orElseThrow();
+        if (!p.getUsuario().getUsername().equals(username)) {
+            throw new RuntimeException("No tienes permiso para cancelar esta participación.");
+        }
+        participacionRepo.deleteById(participacionId);
+    }
+
+    public List<Usuario> obtenerParticipantesDeEvento(Long eventoId, String organizadorUsername) {
+        
+        return participacionRepo.findByEventoId(eventoId)
+                .stream()
+                .map(Participacion::getUsuario)
+                .toList();
+    }
+
+    
+
 }
