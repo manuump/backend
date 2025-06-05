@@ -37,7 +37,8 @@ public class EventoController {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('EMPRESA')")
-    public ResponseEntity<Evento> actualizarEvento(@PathVariable Long id, @RequestBody Evento evento, Authentication auth) {
+    public ResponseEntity<Evento> actualizarEvento(@PathVariable Long id, @RequestBody Evento evento,
+            Authentication auth) {
         return ResponseEntity.ok(eventoService.actualizarEvento(id, evento, auth.getName()));
     }
 
@@ -47,4 +48,12 @@ public class EventoController {
         eventoService.eliminarEvento(id, auth.getName());
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/mis-eventos")
+    @PreAuthorize("hasRole('EMPRESA')")
+    public ResponseEntity<List<Evento>> listarEventosEmpresa(Authentication auth) {
+        List<Evento> eventos = eventoService.listarEventosPorEmpresa(auth.getName());
+        return ResponseEntity.ok(eventos);
+    }
+
 }

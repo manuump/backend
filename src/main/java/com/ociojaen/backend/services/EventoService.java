@@ -52,4 +52,10 @@ public class EventoService {
         }
         eventoRepo.delete(evento);
     }
+
+    public List<Evento> listarEventosPorEmpresa(String username) {
+        Usuario organizador = usuarioRepo.findByUsername(username).orElseThrow();
+        return eventoRepo.findByOrganizadorId(organizador.getId());
+    }
+
 }
