@@ -3,11 +3,15 @@ package com.ociojaen.backend.controllers;
 import com.ociojaen.backend.models.Participacion;
 import com.ociojaen.backend.models.Usuario;
 import com.ociojaen.backend.services.ParticipacionService;
+
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 import java.util.List;
 
@@ -43,6 +47,14 @@ public class ParticipacionController {
         return ResponseEntity.ok(participacionService.obtenerParticipantesDeEvento(eventoId, auth.getName()));
     }
 
-       
+    @GetMapping("/evento/{eventoId}/pdf")
+    @PreAuthorize("hasRole('EMPRESA')")
+    public void descargarPdf(
+        @PathVariable Long eventoId,
+        HttpServletResponse response
+    ) throws IOException {
+        participacionService.generarPdfParticipantesDelEvento(eventoId, null, response);
+    }
+
 
 }
