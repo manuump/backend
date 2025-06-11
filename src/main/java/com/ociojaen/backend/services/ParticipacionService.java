@@ -88,10 +88,8 @@ public class ParticipacionService {
             Image logo = Image.getInstance(getClass().getResource("/static/logo.png"));
             logo.scaleToFit(100, 100);
 
-            // Coloca el logo en la esquina superior derecha (ajustando según tamaño del
-            // logo)
-            float x = document.right() - 100; // 100 es el ancho del logo
-            float y = document.top() - 60; // ligeramente más abajo que el borde superior
+            float x = document.right() - 100; 
+            float y = document.top() - 60; 
             logo.setAbsolutePosition(x, y);
 
             document.add(logo);
